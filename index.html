@@ -24,10 +24,64 @@
         vertical-align: middle;
         margin-top: -0.1em;
       }
+
+      main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .box {
+        border-bottom: 2px solid #64748b;
+        border-right: 2px solid #64748b;
+        padding: 20px;
+        width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .desc {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .day {
+        font-weight: bold;
+        text-decoration: underline;
+        color: #334155;
+      }
+
+      .today {
+        border-bottom: 4px solid #ef4444;
+        border-right: 4px solid #ef4444;
+
+        .day {
+          font-size: 1.5em;
+          color: #fef2f2;
+        }
+
+        .desc {
+          color: #fcd34d;
+        }
+      }
+
+      .option {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        line-height: normal;
+
+        input {
+          margin-top: 2px;
+        }
+      }
     </style>
   </head>
   <body class="flex flex-col bg-slate-950 text-white">
-    <div class="p-4 flex justify-between bg-slate-800">
+    <div class="p-4 flex justify-between bg-slate-950">
       <div class="text-xl flex items-center md:text-2xl">
         <span class="font-bold">Music Content Schedule</span>&nbsp;☕&nbsp;<span class="hidden md:block font-thin">a schedule for music content</span>
       </div>
@@ -43,7 +97,87 @@
       </div>
     </div>
     <main class="p-4">
-      <div>Enter your content here.</div>
+      <div id="day-0" class="box font-mono">
+        <div class="day">Sunday</div>
+        <div class="desc">Release Queueing 🗓️</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Queue up at least one new release for an upcoming release day</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Create a plan for one new or existing release (including graphical assets)</div>
+        </div>
+      </div>
+      <div id="day-1" class="box font-mono">
+        <div class="day">Monday</div>
+        <div class="desc">Midi Controllerism 🎹</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Stream a MIDI controllerism session</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Edit a MIDI controllerism video and associated short</div>
+        </div>
+      </div>
+      <div id="day-2" class="box font-mono">
+        <div class="day">Tuesday</div>
+        <div class="desc">Release Day! ⭐️</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Cross-post your release on youtube, twitter, instagram and facebook as a short</div>
+        </div>
+      </div>
+      <div id="day-3" class="box font-mono">
+        <div class="day">Wednesday</div>
+        <div class="desc">Brand Building 🙈</div>
+
+        <div class="option">
+          <input type="checkbox">
+          <div>Add 3 new youtube thumbnail assets to photoshop file</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Create 3 new generic cover art posters with oavp + photoshop</div>
+        </div>
+      </div>
+      <div id="day-4" class="box font-mono">
+        <div class="day">Thursday</div>
+        <div class="desc">Music Production 💻</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Stream music production (challenge, original or videogame remix work only)</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Stream at least one technique tutorial (can be 5 minutes in length)</div>
+        </div>
+      </div>
+      <div id="day-5" class="box font-mono">
+        <div class="day">Friday</div>
+        <div class="desc">Sample Factory 🔊</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Instantiate a sample pack (theme, cover art) until there are 5 in queue</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Contribute at least 20 samples to a pack (up to 80, then its done)</div>
+        </div>
+      </div>
+      <div id="day-6" class="box font-mono">
+        <div class="day">Saturday</div>
+        <div class="desc">Fan Engagement 😎</div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Respond to 10 comments</div>
+        </div>
+        <div class="option">
+          <input type="checkbox">
+          <div>Leave 10 comments on artists you genuinely like</div>
+        </div>
+      </div>
     </main>
     <script type="text/javascript">
       const d = document; const $ = (s) => d.querySelector(s);
@@ -52,6 +186,10 @@
         if ($("#buy-me-a-coffee").getAttribute('href').length === 0) {
           $("#buy-me-a-coffee").style.display = 'none';
         }
+
+        const dayOfWeek = new Date().getDay();
+
+        $(`#day-${dayOfWeek}`).classList.add('today');
       });
     </script>
   </body>
