@@ -11,6 +11,7 @@
       name="description"
       content="a schedule to make routine music content"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.10/clipboard.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Music Content Schedule | a schedule for music content</title>
     <style>
@@ -98,6 +99,13 @@
     </div>
     <div class="px-4" id="resources">
       <a class="bg-slate-700 rounded p-2 font-bold hover:opacity-75 active:opacity-50" href="https://trello.com/b/Kw2K6kPt/music-release-pipeline">Music Release Pipeline</a>
+      <a
+        href="#youtube-text-copied"
+        class="bg-slate-700 rounded p-2 font-bold hover:opacity-75 active:opacity-50 copy-button"
+        data-text="Like and Subscribe for more! Have anything you want to see explained or demonstrated in another video? Leave a comment down below!&#10;---&#10;https://phrakture.com/&#10;https://phrakture.bandcamp.com/&#10;https://soundcloud.com/phrakture&#10;https://twitch.tv/phrakturemusic&#10;https://twitter.com/phrakturemusic&#10;https://buymeacoffee.com/nafeunasir"
+      >
+        Copy Youtube Meta
+      </a>
     </div>
     <div id="boxes" class="p-4">
       <div id="day-0" class="box font-mono">
@@ -189,7 +197,14 @@
         const dayOfWeek = new Date().getDay();
 
         $(`#day-${dayOfWeek}`).classList.add('today');
+
+        new ClipboardJS('.copy-button', {
+          text: function(trigger) {
+            return trigger.getAttribute('data-text');
+          }
+        });
       });
+
     </script>
   </body>
 </html>
